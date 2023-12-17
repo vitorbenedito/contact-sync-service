@@ -15,6 +15,7 @@ const (
 var a api.App
 
 func TestMain(m *testing.M) {
+	os.Setenv("MAILCHIMP_API", "")
 	a.Initialize()
 	code := m.Run()
 	os.Exit(code)

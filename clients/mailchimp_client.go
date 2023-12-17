@@ -12,6 +12,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 )
 
 func SyncMembers(contact domains.Contact) (*domains.Member, error) {
@@ -62,7 +63,7 @@ func Put(url string, body []byte) (resp *http.Response, err error) {
 		return nil, err
 	}
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Add("Authorization", "Basic "+basicAuth("anystring", "7ead59a7d110f640521c93195a37b42c-us21"))
+	req.Header.Add("Authorization", "Basic "+basicAuth("anystring", os.Getenv("MAILCHIMP_API")))
 	c := &http.Client{}
 	return c.Do(req)
 }

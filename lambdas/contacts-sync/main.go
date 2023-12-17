@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"log"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -14,6 +15,8 @@ import (
 type Response events.APIGatewayProxyResponse
 
 func Handler(ctx context.Context) (Response, error) {
+
+	log.Println("Received request from API Gateway - Sync Contacts API")
 
 	contacts, _ := services.SyncContacts()
 

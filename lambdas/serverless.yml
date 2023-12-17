@@ -6,11 +6,22 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: go1.x
+  region: us-east-2
+  memorySize: 128
+  timeout: 30
+  vpc:
+    securityGroupIds:
+      - sg-04ee3cbf14b5112a5
+    subnetIds:
+      - subnet-001b0dba43c9d525c
+      - subnet-02fbf6044e1e3131b
 
 package:
   patterns:
     - '!./**'
     - ./bin/**
+
+region: us-east-2
 
 functions:
   health:

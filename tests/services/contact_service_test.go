@@ -8,6 +8,7 @@ import (
 )
 
 func TestMain(m *testing.M) {
+	os.Setenv("MAILCHIMP_API", "")
 	code := m.Run()
 	os.Exit(code)
 }
