@@ -1,4 +1,4 @@
-package domain
+package domains
 
 type Member struct {
 	Email  string  `json:"email_address"`

@@ -1,8 +1,8 @@
-package client
+package clients
 
 import (
 	"bytes"
-	"contact-sync-service/domain"
+	"contact-sync-service/domains"
 	"crypto/md5"
 	"encoding/base64"
 	"encoding/hex"
@@ -14,12 +14,12 @@ import (
 	"net/http"
 )
 
-func SyncMembers(contact *domain.Contact) (*domain.Member, error) {
+func SyncMembers(contact domains.Contact) (*domains.Member, error) {
 
-	member := &domain.Member{
+	member := &domains.Member{
 		Email:  contact.Email,
 		Status: "subscribed",
-		Fields: &domain.Fields{
+		Fields: &domains.Fields{
 			FirstName: contact.FirstName,
 			LastName:  contact.LastName,
 		},
@@ -50,7 +50,7 @@ func SyncMembers(contact *domain.Contact) (*domain.Member, error) {
 		return nil, errors.New("Error to sync members: " + string(b))
 	}
 
-	var memberResp *domain.Member
+	memberResp := &domains.Member{}
 	_ = json.NewDecoder(r.Body).Decode(&memberResp)
 
 	return memberResp, nil

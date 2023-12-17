@@ -2,7 +2,10 @@ module contact-sync-service
 
 go 1.21
 
-require github.com/gin-gonic/gin v1.9.1
+require (
+	github.com/gin-gonic/gin v1.9.1
+	golang.org/x/exp v0.0.0-20231214170342-aacd6d4b4611
+)
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect

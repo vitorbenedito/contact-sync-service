@@ -1,7 +1,7 @@
 package contact
 
 import (
-	"contact-sync-service/client"
+	"contact-sync-service/clients"
 	"os"
 	"testing"
 )
@@ -13,7 +13,7 @@ func TestMain(m *testing.M) {
 
 func TestGetContacts(t *testing.T) {
 
-	contacts, _ := client.GetContacts()
+	contacts, _ := clients.GetContacts()
 	if len(contacts) == 0 {
 		t.Errorf("Contacts not found")
 	}
