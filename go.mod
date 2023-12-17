@@ -3,6 +3,7 @@ module contact-sync-service
 go 1.21
 
 require (
+	github.com/aws/aws-lambda-go v1.42.0
 	github.com/gin-gonic/gin v1.9.1
 	golang.org/x/exp v0.0.0-20231214170342-aacd6d4b4611
 )

@@ -1,0 +1,27 @@
+
+service: contact-sync-service
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: go1.x
+
+package:
+  patterns:
+    - '!./**'
+    - ./bin/**
+
+functions:
+  health:
+    handler: bin/health
+    events:
+      - httpApi:
+          path: /health
+          method: get
+  contactSync:
+    handler: bin/contactSync
+    events:
+      - httpApi:
+          path: /contact/sync
+          method: get
