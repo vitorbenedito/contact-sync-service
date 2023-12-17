@@ -10,8 +10,8 @@ import (
 	"testing"
 )
 
-func ResponseToMap(response *httptest.ResponseRecorder) (map[string]string, error) {
-	resp := map[string]string{}
+func ResponseToMap(response *httptest.ResponseRecorder) (map[string]any, error) {
+	resp := map[string]any{}
 	log.Println("Response: " + response.Body.String())
 	var err = json.Unmarshal(response.Body.Bytes(), &resp)
 	if err != nil {
