@@ -3,6 +3,7 @@ package services
 import (
 	"contact-sync-service/clients"
 	"contact-sync-service/domains"
+	"sync"
 )
 
 var syncedContacts = make(map[string]domains.Contact)
@@ -30,6 +31,31 @@ func SyncContacts() (map[string]domains.Contact, error) {
 		syncedContacts[c.Email] = c
 		synced[c.Email] = c
 	}
+
+	return synced, nil
+
+}
+
+func SyncContactsParallel() (map[string]domains.Contact, error) {
+
+	var contacts, _ = clients.GetContacts()
+	var synced = make(map[string]domains.Contact)
+
+	var wg sync.WaitGroup
+	wg.Add(len(contacts))
+
+	for _, c := range contacts {
+
+		go func(contact domains.Contact) {
+			defer wg.Done()
+			clients.SyncMembers(contact)
+			syncedContacts[contact.Email] = contact
+			synced[contact.Email] = contact
+		}(c)
+
+	}
+
+	wg.Wait()
 
 	return synced, nil
 

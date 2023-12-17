@@ -34,3 +34,9 @@ functions:
       - httpApi:
           path: /contacts/sync
           method: get
+  contactSyncParallel:
+    handler: bin/contacts-sync-parallel
+    events:
+      - httpApi:
+          path: /contacts/sync/parallel
+          method: get

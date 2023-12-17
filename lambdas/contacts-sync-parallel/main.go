@@ -15,7 +15,7 @@ func Handler(ctx context.Context) (helper.Response, error) {
 
 	log.Println("Received request from API Gateway - Sync Contacts API")
 
-	contacts, _ := services.SyncContacts()
+	contacts, _ := services.SyncContactsParallel()
 
 	resp, _ := helper.BuildResponse(contacts)
 
