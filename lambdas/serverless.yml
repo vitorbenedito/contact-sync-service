@@ -21,8 +21,6 @@ package:
     - '!./**'
     - ./bin/**
 
-region: us-east-2
-
 functions:
   health:
     handler: bin/health
@@ -31,8 +29,8 @@ functions:
           path: /health
           method: get
   contactSync:
-    handler: bin/contactSync
+    handler: bin/contacts-sync
     events:
       - httpApi:
-          path: /contact/sync
+          path: /contacts/sync
           method: get

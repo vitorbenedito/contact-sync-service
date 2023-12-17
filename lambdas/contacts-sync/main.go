@@ -8,6 +8,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"golang.org/x/exp/maps"
 
 	"contact-sync-service/services"
 )
@@ -22,7 +23,11 @@ func Handler(ctx context.Context) (Response, error) {
 
 	var buf bytes.Buffer
 
-	body, err := json.Marshal(contacts)
+	var response = make(map[string]any)
+	response["syncedContacts"] = len(contacts)
+	response["contacts"] = maps.Values(contacts)
+
+	body, err := json.Marshal(response)
 
 	if err != nil {
 		return Response{StatusCode: 404}, err
