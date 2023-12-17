@@ -1,7 +1,6 @@
-package tests
+package services
 
 import (
-	"contact-sync-service/services"
 	"os"
 	"testing"
 	"time"
@@ -9,15 +8,13 @@ import (
 
 func TestMain(m *testing.M) {
 	os.Setenv("MAILCHIMP_API", "")
-	code := m.Run()
-	os.Exit(code)
 }
 
 func TestSyncContacts(t *testing.T) {
 
-	services.SyncContacts()
+	SyncContacts()
 
-	contacts := services.GetSyncedContatcs()
+	contacts := GetSyncedContatcs()
 
 	if len(contacts) == 0 {
 		t.Errorf("Contacts not found")
@@ -27,11 +24,11 @@ func TestSyncContacts(t *testing.T) {
 
 func TestSyncContactsAsync(t *testing.T) {
 
-	services.SyncContactsAsync()
+	SyncContactsAsync()
 
 	time.Sleep(3 * time.Second)
 
-	contacts := services.GetSyncedContatcs()
+	contacts := GetSyncedContatcs()
 
 	if len(contacts) == 0 {
 		t.Errorf("Contacts not found")

@@ -1,7 +1,6 @@
-package tests
+package api
 
 import (
-	"contact-sync-service/api"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -29,7 +28,7 @@ func Request(method string, endpoint string) *http.Request {
 	return req
 }
 
-func ExecuteRequest(req *http.Request, a api.App) *httptest.ResponseRecorder {
+func ExecuteRequest(req *http.Request, a App) *httptest.ResponseRecorder {
 	rr := httptest.NewRecorder()
 	a.Router.ServeHTTP(rr, req)
 	return rr

@@ -1,7 +1,6 @@
-package tests
+package api
 
 import (
-	"contact-sync-service/api"
 	"net/http"
 	"os"
 	"testing"
@@ -12,7 +11,7 @@ const (
 	GET = "GET"
 )
 
-var a api.App
+var a App
 
 func TestMain(m *testing.M) {
 	os.Setenv("MAILCHIMP_API", "")
