@@ -4,12 +4,6 @@
 
 Golang service to sync contacts from Contacts API and add members on a List in Mailchimp API
 
-### API docs
-
-The template doesn't have API docs. For web service, please include API docs here, whether it's
-auto-generated or hand-written. For auto-generated API docs, you can also give instructions on the
-build process.
-
 ### Design
 
 The project design documentation
