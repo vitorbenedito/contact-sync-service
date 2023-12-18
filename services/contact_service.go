@@ -80,6 +80,7 @@ func SyncContactsParallel() (map[string]domains.Contact, error) {
 	var contacts, _ = clients.GetContacts()
 	synced := make(map[string]domains.Contact)
 
+	// define the channel buffer to limit the requests simultaneously
 	const max = 10
 	queue := make(chan domains.Contact, max)
 
