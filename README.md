@@ -1,5 +1,65 @@
 # contact-sync-service
 
-Documentation:
+## About the project
 
-https://holly-card-34d.notion.site/Contacts-Sync-Technical-Design-d082fef3f0f24491908668392ddf41c3
+Golang service to sync contacts from Contacts API and add members on a List in Mailchimp API
+
+### API docs
+
+The template doesn't have API docs. For web service, please include API docs here, whether it's
+auto-generated or hand-written. For auto-generated API docs, you can also give instructions on the
+build process.
+
+### Design
+
+The project design documentation
+
+* [Project Design](https://holly-card-34d.notion.site/Contacts-Sync-Technical-Design-d082fef3f0f24491908668392ddf41c3)
+
+## Getting started
+
+How deploy the application:
+
+Configure MailChimp Key "MAILCHIMP_API" on api/.env file or define the Key on the variables
+
+```
+export MAILCHIMP_API=xyz
+```
+
+To deploy the project you can use the bash ./run on the project root
+
+```
+./run
+```
+
+You can deploy too using the go command
+
+```
+go run .
+```
+
+Here are the endpoints from the API
+
+GET /contacts/sync
+
+```
+http://localhost:8080/contacts/sync
+```
+
+GET /contacts
+
+```
+http://localhost:8080/contacts
+```
+
+GET /contacts/sync/async
+
+```
+http://localhost:8080/contacts/sync/async
+```
+
+GET /contacts/sync/parallel
+
+```
+http://localhost:8080/contacts/sync/parallel
+```
