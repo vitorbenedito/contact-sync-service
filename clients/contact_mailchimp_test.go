@@ -16,7 +16,9 @@ func TestSyncMembers(t *testing.T) {
 		LastName:  "Bandeira",
 	}
 
-	member, _ := SyncMembers(contact)
+	var lists, _ = GetList()
+
+	member, _ := SyncMembers(contact, lists[0].Id)
 	if member.Email != contact.Email {
 		t.Errorf("Error to sync member")
 	}

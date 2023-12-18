@@ -1,13 +1,11 @@
 package services
 
 import (
-	"os"
 	"testing"
 	"time"
 )
 
 func TestMain(m *testing.M) {
-	os.Setenv("MAILCHIMP_API", "")
 }
 
 func TestSyncContacts(t *testing.T) {
