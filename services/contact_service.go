@@ -68,7 +68,7 @@ func SyncContacts() (map[string]domains.Contact, error) {
 
 	for _, c := range contacts {
 		_, err := clients.SyncMembers(c, list.Id)
-		if err != nil {
+		if err == nil {
 			syncedContacts[c.Email] = c
 			synced[c.Email] = c
 		}
