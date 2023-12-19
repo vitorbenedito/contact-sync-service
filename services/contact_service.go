@@ -6,6 +6,7 @@ import (
 	"contact-sync-service/jsons"
 	"encoding/json"
 	"errors"
+	"log"
 	"sync"
 )
 
@@ -66,9 +67,11 @@ func SyncContacts() (map[string]domains.Contact, error) {
 	list, _ := CreateOrFindList()
 
 	for _, c := range contacts {
-		clients.SyncMembers(c, list.Id)
-		syncedContacts[c.Email] = c
-		synced[c.Email] = c
+		_, err := clients.SyncMembers(c, list.Id)
+		if err != nil {
+			syncedContacts[c.Email] = c
+			synced[c.Email] = c
+		}
 	}
 
 	return synced, nil
@@ -107,9 +110,14 @@ func SyncContactsParallel() (map[string]domains.Contact, error) {
 func worker(wg *sync.WaitGroup, queue chan domains.Contact, listId string, synced map[string]domains.Contact) {
 	defer wg.Done()
 	for contact := range queue {
-		clients.SyncMembers(contact, listId)
-		syncedContacts[contact.Email] = contact
-		synced[contact.Email] = contact
+		log.Println("Sync contact: " + contact.Email)
+		_, err := clients.SyncMembers(contact, listId)
+		if err != nil {
+			log.Println("Error to sync conctact: " + contact.Email + ", error: " + err.Error())
+		} else {
+			syncedContacts[contact.Email] = contact
+			synced[contact.Email] = contact
+		}
 	}
 }
 
