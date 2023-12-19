@@ -9,6 +9,8 @@ Golang service to sync contacts from Contacts API and add members on a List in M
 The project design documentation
 
 * [Project Design](https://holly-card-34d.notion.site/Contacts-Sync-Technical-Design-d082fef3f0f24491908668392ddf41c3)
+* [Video AVI](https://drive.google.com/file/d/1g08b6l41IZXa8wZ7nPmbAPvmzJK_1WGe/view?usp=sharing)
+* [Video WEBM](https://drive.google.com/file/d/1bWs4zD1DYr-DYlPp9PXyv-7Lkon5a4Xt/view?usp=sharing)
 
 ## Getting started
 
